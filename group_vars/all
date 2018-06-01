@@ -1,0 +1,11 @@
+---
+
+vpc_id: vpc-ff066c84
+subnet_id: subnet-f2a37db8
+ec2_keypair: mintron
+instance_count: 2
+db_subnets:
+  - subnet-f2a37db8
+  - subnet-6c292331
+db_availability_zone: us-east-1a
+db_username: todobackend

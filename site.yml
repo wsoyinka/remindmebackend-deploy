@@ -1,0 +1,13 @@
+---
+
+- name: RemindmeBackend Deploy Playbook
+  hosts: localhost
+  connection: localhost
+  gather_facts: no
+  vars_files:
+    - secrets.yml
+  environment:
+    AWS_DEFAULT_REGION: "{{ lookup('env', 'AWS_DEFAULT_REGION') | default('us-east-1', true) }}"
+  tasks:
+    - include: tasks/create_stack.yml
+    - include: tasks/deploy_app.yml
