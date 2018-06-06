@@ -1,0 +1,20 @@
+---
+
+- name: set task definition facts
+  set_facts:
+    remindmebackend_task_def_arn:
+      "{{ cf_stack.stack_outputs.RemindmebackendTaskDefinition | regex_replace('^(.*):[\\d]*$','\\1') }}"
+    remindmebackend_adhoc_task_def_arn:
+      "{{ cf_stack.stack_outputs.RemindmebackendAdhocTaskDefinition | regex_replace('^(.*):[\\d]*$', '\\1') }}"
+
+- name: update task definitions
+  aws_ecs_taskdefinition:
+    state: update
+    arn: "{{ item }}"
+    containers:
+      - name: remindmebackend
+        image: "{{ image_tag }}"
+    with_items:
+      - "{{ remindmebackend_task_def_arn }}"
+      - "{{ remindmebackend_adhoc_task_def_arn }}"
+    when: image_tag is defined
