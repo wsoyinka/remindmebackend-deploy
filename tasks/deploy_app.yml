@@ -1,7 +1,7 @@
 ---
 
 - name: set task definition facts
-  set_facts:
+  set_fact:
     remindmebackend_task_def_arn:
       "{{ cf_stack.stack_outputs.RemindmebackendTaskDefinition | regex_replace('^(.*):[\\d]*$','\\1') }}"
     remindmebackend_adhoc_task_def_arn:
