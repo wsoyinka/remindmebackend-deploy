@@ -2,7 +2,7 @@
 
 vpc_id: vpc-ff066c84
 subnet_id: subnet-f2a37db8
-ec2_keypair: mintron
+ec2_keypair: juimper
 instance_count: 2
 db_subnets:
   - subnet-f2a37db8
