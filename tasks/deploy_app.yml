@@ -14,10 +14,10 @@
     containers:
       - name: remindmebackend
         image: "{{ image_tag }}"
-    with_items:
-      - "{{ remindmebackend_task_def_arn }}"
-      - "{{ remindmebackend_adhoc_task_def_arn }}"
-    when: image_tag is defined
+  with_items:
+    - "{{ remindmebackend_task_def_arn }}"
+    - "{{ remindmebackend_adhoc_task_def_arn }}"
+  when: image_tag is defined
 
 - name: run migrations
   ecs_task:
