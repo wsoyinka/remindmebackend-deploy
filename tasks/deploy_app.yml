@@ -58,8 +58,8 @@
           - "manage.py"
           - "collectstatic"
           - "--noinput"
-    register: collectstatic_task
-    when: ('collectstatic' in ecs_tasks | default([]))
+  register: collectstatic_task
+  when: ('collectstatic' in ecs_tasks | default([]))
 
 - block:
   - debug: msg={{ collectstatic_task }}
